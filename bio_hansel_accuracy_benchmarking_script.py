@@ -28,7 +28,6 @@ def main():
 
 
 
-
     for sample_id, row in sample_info.iterrows():
         outdir = row['outdir']
         fastq_out_dir = os.path.join(outdir,"fastq")
@@ -61,7 +60,7 @@ def main():
 
         bash_string += "rm {} &&\n".format(R1)
         bash_string += "rm {} ;\n".format(R2)
-        target = open(job_outdir + str(sample_id) + '.sh', 'w')
+        target = open(os.path.join(job_outdir,"{}.sh".format(sample_id)), 'w')
         target.write(bash_string)
         target.close()
 
